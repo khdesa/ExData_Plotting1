@@ -1,0 +1,8 @@
+data = read.table("C:/Users/HP/Downloads/exdata-data-household_power_consumption/household_power_consumption.txt", sep = ";", header = TRUE, na.strings='?')
+subdata <- subset(data, Date == '1/2/2007' | Date == '2/2/2007')
+png("plot3.png", width=480, height=480)
+plot(subdata$DateTime, subdata$Sub_metering_1, type="l", xlab="", ylab="Energy sub metering") 
+lines(subdata$DateTime, subdata$Sub_metering_2, col="red")
+lines(subdata$DateTime, subdata$Sub_metering_3, col="blue")
+legend("topright", c("Sub_metering_1","Sub_metering_2","Sub_metering_3"), col = c("black", "red", "blue"), lwd=1)
+dev.off()
